@@ -33,18 +33,24 @@ public class Task2 : MonoBehaviour, IAnimation
             else _speed = value;
         }
     }
+    public Vector2 Center
+    {
+        get { return _center; }
+        set { _center = value; }
+    }
 
     float _amplitude = 5.0f;
     float _lenght = 100.0f;
     float _speed = 50.0f;
+    Vector2 _center = new Vector2(10.5f, 18.5f);
 
     float _omega;
 
     public Vector3 GetPosition(float time)
     {
         return new Vector3(transform.position.x,
-           Mathf.Abs(Amplitude * Mathf.Sin((Mathf.Pow(transform.position.x - 10.5f, 2) +
-           Mathf.Pow(transform.position.z - 18.5f, 2)) * _omega + Time.time * _omega * Speed)),
+           Mathf.Abs(Amplitude * Mathf.Sin((Mathf.Pow(transform.position.x - Center.x, 2) +
+           Mathf.Pow(transform.position.z - Center.y, 2)) * _omega + Time.time * _omega * Speed)),
             transform.position.z);
     }
 
